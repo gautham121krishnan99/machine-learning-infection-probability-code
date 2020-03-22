@@ -1,0 +1,61 @@
+function [X]=read_data()
+load('Mode_transport.mat');
+m=14498;
+X=zeros(m,17);
+for i=1:m
+    if(Mode_transport(i)=="Car")
+    X(i,1)=10;
+    end
+    if(Mode_transport(i)=="Walk")
+    X(i,1)=15;
+    end
+    if(Mode_transport(i)=="Public")
+    X(i,1)=20;
+    end
+end
+X(:,2)=readmatrix('Test_dataset.xlsx','Range','J:J');
+X(:,3)=readmatrix('Test_dataset.xlsx','Range','N:N');
+load('Pulmonaryscore.mat');
+for i=1:m
+    if(Pulmonaryscore(i)=="<400")
+    X(i,4)=10;
+    end
+    if(Pulmonaryscore(i)=="<300")
+    X(i,4)=15;
+    end
+    if(Pulmonaryscore(i)=="<200")
+    X(i,4)=20;
+    end
+    if(Pulmonaryscore(i)=="<100")
+    X(i,4)=30;
+    end
+end
+
+X(:,5)=readmatrix('Test_dataset.xlsx','Range','AA:AA');
+load('cardiologicalpressure.mat'); 
+for i=1:m
+    if(cardiologicalpressure(i)=="Normal")
+    X(i,6)=10;
+    end
+    if(cardiologicalpressure(i)=="Elevated")
+    X(i,6)=15;
+    end
+    if(cardiologicalpressure(i)=="Stage-01")
+    X(i,6)=20;
+    end
+    if(cardiologicalpressure(i)=="Stage-02")
+    X(i,6)=30;
+    end
+end
+X(:,7)=readmatrix('Test_dataset.xlsx','Range','Q:Q');
+X(:,8)=readmatrix('Test_dataset.xlsx','Range','R:R');
+X(:,9)=readmatrix('Test_dataset.xlsx','Range','S:S');
+X(:,10)=readmatrix('Test_dataset.xlsx','Range','T:T');
+X(:,11)=readmatrix('Test_dataset.xlsx','Range','U:U');
+X(:,12)=readmatrix('Test_dataset.xlsx','Range','V:V');
+X(:,13)=readmatrix('Test_dataset.xlsx','Range','W:W');
+X(:,14)=readmatrix('Test_dataset.xlsx','Range','X:X');
+X(:,15)=readmatrix('Test_dataset.xlsx','Range','M:M');
+X(:,16)=readmatrix('Test_dataset.xlsx','Range','Y:Y');
+X(:,17)=readmatrix('Test_dataset.xlsx','Range','A:A');
+end
